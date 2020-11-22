@@ -7,10 +7,10 @@ Welcome to your new app.
 <SurveyPrompt Title="How is Blazor working for you?" /> *@
 
 
-<div className='container'>
-    <div className='row'>
-        <div className='col-md-12' role='main'>
-            <section className='intro'>
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-12' role='main'>
+            <section class='intro'>
                 <h1>title='Plan Your Vote'</h1>
                     <p class='section-description'>'Be prepared for the random order ballot. Choose candidates, answer
                     Capital Plan borrowing questions, and pick where and when to vote -
@@ -31,43 +31,43 @@ Welcome to your new app.
                     *@
                     <div style="background-color:@highlightYellow">[NEED A LINK HERE TO START-PLANNING]</div>
 
-                    <div className='divider' />
-                    <div className='center'>
+                    <div class='divider' />
+                    <div class='center'>
                         <div
-                            className='intro-left'
+                            class='intro-left'
                             role='region'
                             aria-label='Voter tool - Feature list:'
                         >
                             @* {this.introTips()} *@
                         </div>
                         <div
-                            className='intro-right'
+                            class='intro-right'
                             role='region'
                             tabIndex='-1'
                             aria-label='voter tool - general flow'
                         >
                             <img
-                            className='intro-right-img'
+                            class='intro-right-img'
                             src='https://vancouver.ca/plan-your-vote/img/intro_right_legend.png'
                             alt='intro'
                             />
-                            <span className='intro-pointer candidates'>
+                            <span class='intro-pointer candidates'>
                             Step 1 Your candidate selections
                             </span>
-                            <span className='intro-pointer capital-plan'>
+                            <span class='intro-pointer capital-plan'>
                             Step 2 Your Capital Plan borrowing answers
                             </span>
-                            <span className='intro-pointer details'>
+                            <span class='intro-pointer details'>
                             Step 3 Your voting day and location details
                             </span>
-                            <span className='intro-pointer checklist'>
+                            <span class='intro-pointer checklist'>
                             Step 4 Your voting checklist
                             </span>
                         </div>
                     </div>
-                <div className='divider' />
+                <div class='divider' />
                 <div
-                    className='intro-center'
+                    class='intro-center'
                     role='region'
                     aria-label='Important disclosures.'
                 >
@@ -78,7 +78,7 @@ Welcome to your new app.
 
                     
 
-                    <p className='reassurance text-uppercase' role='alert'>
+                    <p class='reassurance text-uppercase' role='alert'>
                         <img
                         src='https://vancouver.ca/plan-your-vote/img/lock-black.jpg'
                         alt='lock icon'
@@ -89,7 +89,7 @@ Welcome to your new app.
                     {
                         <p>@disclaim</p>
                     }
-                    <p className='to-election-site' role='alert'>
+                    <p class='to-election-site' role='alert'>
                         For details on voter registration, identification, and more,
                         <br />
                         <a
@@ -97,7 +97,7 @@ Welcome to your new app.
                         aria-label=' or details on voter registration, identification, and more, visit the full election site on vancouver.ca'
                         >
                         visit full election site &nbsp;
-                        <span className='fas fa-chevron-right' />
+                        <span class='fas fa-chevron-right' />
                         </a>
                     </p>
                 </div>
@@ -112,7 +112,7 @@ Welcome to your new app.
 </div>
 
 @code {
-    Dictionary<String, String> bulletPlanning = new Dictionary<String, String>() {
+    Dictionary<string, string> bulletPlanning = new Dictionary<string, string>() {
         { "1", "Browse candidates for mayor, councillor, Park Board commissioner, and school trustee, then add your favourites to your plan." },
         { "2", "Answer 3 Capital Plan borrowing questions about whether the City can borrow money to help pay for certain projects." },
         { "3", "`Choose from 9 voting days and over 100 locations to fit your schedule." },
@@ -131,6 +131,8 @@ Welcome to your new app.
 
 }
 
+
+@* VISIUAL REMINDER OF SIMPLE LINKS NEEDED FOR ROUTING *@
 @code {
     private string highlightYellow = "yellow";
     private string highlightBlue = "blue";

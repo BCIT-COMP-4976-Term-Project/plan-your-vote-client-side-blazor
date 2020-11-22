@@ -13,8 +13,8 @@
 
 <footer>
     <div className='container'>
-        <div className='row'>
-            <div className='col-md-6'>
+        <div class='row'>
+            <div class='col-md-6'>
                 <img id='footer-logo' src={logo.value} alt={logo.description} />
                 <div id='footer-copyright'>&copy; 2019 Vancouver</div>
                 <ul id='footer-nav'>
@@ -30,15 +30,23 @@
                     </li>
                 </ul>
             </div>
-            <div className='col-md-6'>
+            <div class='col-md-6'>
                 <ul id='footer-share'>
-                    {socialIcon('twitter', 'fa-twitter')}
+                    @foreach (var icon in socialIcons)
+                    {
+                        <li id=@icon.Key class='fa-stack'>
+                            <i class="fas fa-circle fa-stack-2x" />
+                            <i class="fab ${@icon.Value} fa-stack-1x fa-inverse`" />
+                        </li>
+                    }
+
+                    @* {socialIcon('twitter', 'fa-twitter')}
                     {socialIcon('facebook', 'fa-facebook-f')}
-                    {socialIcon('linkedin', 'fa-linkedin-in')}
+                    {socialIcon('linkedin', 'fa-linkedin-in')} *@
                 </ul>
                 <select
                     aria-label='Change language to: '
-                    className='custom-select custom-select-sm'
+                    class='custom-select custom-select-sm'
                 >
                     <option value='0'>en</option>
                 </select>
@@ -47,6 +55,14 @@
     </div>
 </footer>
 
-@code  {
-    private
+@code {
+
+    @* NOTE 'fa-' is fontAwesome STYLE LIBRARY *@
+    Dictionary<string, string> socialIcons = new Dictionary<string, string>   
+    {
+       {"twitter", "fa-twitter"},
+       {"facebook", "fa-facebook-f"},
+       {"linkedin", "fa-linkedin-in"}
+    };
 }
+

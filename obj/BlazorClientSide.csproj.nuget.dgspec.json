@@ -42,6 +42,10 @@
       "frameworks": {
         "netstandard2.1": {
           "dependencies": {
+            "Blazorise.Icons.FontAwesome": {
+              "target": "Package",
+              "version": "[0.9.2, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
               "version": "[3.2.1, )"

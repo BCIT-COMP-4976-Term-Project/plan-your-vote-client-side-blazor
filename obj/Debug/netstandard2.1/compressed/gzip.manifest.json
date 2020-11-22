@@ -1,7 +1,7 @@
 {
   "FilesToCompress": [
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\h0Vh-UO25PcnHKvFvb4TWSCgaDcp-CMtLbw6ITznuJM=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\wiGv57VjhJ3Kz7mP6TuA5isJfw8QFxjVE3zBTbN_PTs=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\BlazorClientSide.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/BlazorClientSide.dll.gz"
     },
@@ -156,17 +156,17 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/System.Text.Encodings.Web.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\Bs1Wrmh4ex9dTEIT0yCRF52N-wOmsBDt457BHr0-ssM=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\O_AClmxYmKcKCv-PvQk4tx2T7TlTwypImRCpMNwiwms=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.Extensions.DependencyInjection.Abstractions.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.DependencyInjection.Abstractions.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\bSgsT2x5xMvs8mara5wU_EJwcyHa9GVMU85HwhWcdWM=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\6q7n5uluNOxeOXWmdgNACFYCHlSFwLGXfvdaSx1fAJk=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.AspNetCore.Components.Web.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.AspNetCore.Components.Web.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\m7Q_cF5-ji3OMfdGlCuE8pQ-iM_kxNHLq-IEWVvIaOg=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\FuzsEzH9sQ12Pdrqqk5WbdB_Fzy18MOe1W7UT3PW_0c=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.AspNetCore.Components.Forms.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.AspNetCore.Components.Forms.dll.gz"
     },
@@ -181,12 +181,12 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/System.ComponentModel.DataAnnotations.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\PEg9ghiKSWBTX0jq8pFDvv2Yvw92Y8W0ELtWrSE4fhA=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\q_HGbzWFWgtjFuiEwuUR1EmwN0w0pWbg9_N_o3YLQ3A=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.AspNetCore.Components.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.AspNetCore.Components.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\6gJMwefpsWLHWsEipZp143xn8k2Ea27upnXqjUT6iNI=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\158xXzg17TGmKMk8Its2Zi5awTua_JPcxgL49yWK2cI=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.Extensions.Logging.Abstractions.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.Logging.Abstractions.dll.gz"
     },
@@ -196,12 +196,12 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.AspNetCore.Components.WebAssembly.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\oK1Bjv95fH_hSbogUkJE_xDAI203kJG6lL6Sm-NuPWg=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\1F-wUgXS24IEcgjEtPq9GSC4I7V9f94yI_TwDe7XlMI=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.Extensions.DependencyInjection.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.DependencyInjection.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\y-FyJQOcW2TOcTp7Iuv8brGBzL5ZP0oJdG7ysK_gtKc=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\DMpuPn3obzlarJujzk3yNzcISc75h8mdbxWKEjYbDL4=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.Extensions.Primitives.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.Primitives.dll.gz"
     },
@@ -246,12 +246,12 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.Logging.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\rvTW0d54uLW0iDMAX30lpmr9f8uHoS3YYkEU5zNGhyc=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\9jow9vaxoUfLO97UVpFL3dZS6G3luBqhDhij5a2_7HE=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.Extensions.Options.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.Extensions.Options.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\LqwA2Rpm96Ualk0IhLZar87kfRCyKHzHTeTt2jYhm7M=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\h2AapWWKHFNKXcAQwgQ-7TS-LA4HLtpF07O8PQq2etY=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\Microsoft.JSInterop.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.JSInterop.dll.gz"
     },
@@ -261,7 +261,7 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.JSInterop.WebAssembly.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\AcSql6S2Thp7h9yoZ6jqDi8iqfglgodX7dOcVyBk4Yc=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\WkPZFL5mBNtCpUReYKcyBK9KHyeOx_v3Z76Tra_Xoh0=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\BlazorClientSide.pdb",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/BlazorClientSide.pdb.gz"
     },
@@ -286,7 +286,7 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/blazor.webassembly.js.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\3F5Hst9mIYwRnYozkgG-xggUQKwLOSkM10kRzWtkIXg=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\K6xtZ_ivJl8_OGE1B72fApU9fdXZJxy1dmXqTPdl9GM=.hash",
       "Source": "C:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\obj\\Debug\\netstandard2.1\\blazor\\blazor.boot.json",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/blazor.boot.json.gz"
     }
