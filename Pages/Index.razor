@@ -1,20 +1,15 @@
-﻿@page "/"
-
-@* <h1>Plan Your Vote</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" /> *@
+﻿@layout MainLayout
+@page "/"
 
 
 <div class='container'>
     <div class='row'>
         <div class='col-md-12' role='main'>
             <section class='intro'>
-                <h1>title='Plan Your Vote'</h1>
-                    <p class='section-description'>'Be prepared for the random order ballot. Choose candidates, answer
+                <h1>Plan Your Vote</h1>
+                    <p class='section-description'>Be prepared for the random order ballot. Choose candidates, answer
                     Capital Plan borrowing questions, and pick where and when to vote -
-                    all with Plan Your Vote.'</p>
+                    all with Plan Your Vote.</p>
                     @*
                         {START PLANNING LINK HERE]
                         {this.startPlanning()} 
@@ -23,7 +18,7 @@ Welcome to your new app.
 
                     @foreach (var bullet in bulletPlanning)
                     {
-                        <ul>@bullet.Key.  @bullet.Value</ul>
+                        <ol>@bullet.Key.  @bullet.Value</ol>
                     }
                     @* @*
                         {START PLANNING LINK HERE]
@@ -96,16 +91,11 @@ Welcome to your new app.
                         href='https://vancouver.ca/your-government/2018-election.aspx'
                         aria-label=' or details on voter registration, identification, and more, visit the full election site on vancouver.ca'
                         >
-                        visit full election site &nbsp;
+                        visit full election site &gt; &nbsp;
                         <span class='fas fa-chevron-right' />
                         </a>
                     </p>
                 </div>
-                @*
-                    {START PLANNING LINK HERE]
-                    {this.startPlanning()} 
-                *@
-                <div style="background-color:@highlightBlue; color:@colorWhite">[NEED A LINK HERE TO VISIT ELECTION SITE]</div>
             </section>
         </div>
     </div>
@@ -138,6 +128,11 @@ Welcome to your new app.
     private string highlightBlue = "blue";
     private string colorWhite = "white";
 }
+
+@* <style>
+
+
+</style> *@
  
 
    

@@ -1,18 +1,22 @@
 ﻿@inherits LayoutComponentBase
 
 
-<div class="main">
-    <div class="top-row px-4">
-        <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-    </div>
-
-    <div class="content px-4">
+<div class='wrapper'>
+    <header class='main-head'>
+        <nav class='main-nav'>
+            <div class='grey' />
+            <div class='nav-opt'>
+                <a class='home' href="http://blazor.net" target="_blank">Home</a>
+                <a class='planning' href="http://blazor.net" target="_blank">Start Planning</a>
+            </div>
+        </nav>
+    </header>
+    <div>
         @Body
     </div>
-</div>
-
-<footer>
-    <div className='container'>
+    <footer class='main-footer'>
+        I am the footer
+        <div class='container'>
         <div class='row'>
             <div class='col-md-6'>
                 <img id='footer-logo' src={logo.value} alt={logo.description} />
@@ -32,13 +36,15 @@
             </div>
             <div class='col-md-6'>
                 <ul id='footer-share'>
-                    @foreach (var icon in socialIcons)
+                    <li>
+                        <i class="fab fa-twitter"></i>
+                    </li>
+                    @* @foreach (var icon in socialIcons)
                     {
                         <li id=@icon.Key class='fa-stack'>
-                            <i class="fas fa-circle fa-stack-2x" />
-                            <i class="fab ${@icon.Value} fa-stack-1x fa-inverse`" />
+                            <i class="fab fa-twitter-square"></i>
                         </li>
-                    }
+                    } *@
 
                     @* {socialIcon('twitter', 'fa-twitter')}
                     {socialIcon('facebook', 'fa-facebook-f')}
@@ -53,7 +59,8 @@
             </div>
         </div>
     </div>
-</footer>
+    </footer>
+</div>
 
 @code {
 
