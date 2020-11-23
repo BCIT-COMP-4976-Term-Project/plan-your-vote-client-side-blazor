@@ -36,15 +36,12 @@
             </div>
             <div class='col-md-6'>
                 <ul id='footer-share'>
-                    <li>
-                        <i class="fab fa-twitter"></i>
-                    </li>
-                    @* @foreach (var icon in socialIcons)
+                    @foreach (var icon in socialIcons)
                     {
                         <li id=@icon.Key class='fa-stack'>
-                            <i class="fab fa-twitter-square"></i>
+                            <i class="fab @icon.Value"></i>
                         </li>
-                    } *@
+                    }
 
                     @* {socialIcon('twitter', 'fa-twitter')}
                     {socialIcon('facebook', 'fa-facebook-f')}
@@ -67,9 +64,9 @@
     @* NOTE 'fa-' is fontAwesome STYLE LIBRARY *@
     Dictionary<string, string> socialIcons = new Dictionary<string, string>   
     {
-       {"twitter", "fa-twitter"},
-       {"facebook", "fa-facebook-f"},
-       {"linkedin", "fa-linkedin-in"}
+       {"twitter", "fa-twitter-square fa-3x"},
+       {"facebook", "fa-facebook fa-3x"},
+       {"linkedin", "fa-linkedin fa-3x"}
     };
 }
 

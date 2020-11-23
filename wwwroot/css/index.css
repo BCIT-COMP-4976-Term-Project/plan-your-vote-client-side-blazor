@@ -21,6 +21,28 @@ header {
     background-color: cyan;
 }
 
+#facebook,
+#linkedin,
+#twitter {
+    width: 48px;
+    height: 48px;
+}
+
+#facebook > i {
+    color: #4064AC;
+    text-align: center;
+}
+
+#linkedin {
+    color: #59A6CF;
+    text-align: center;
+    margin-left: 2px;
+}
+
+#twitter > i {
+    color: #34D1F7;
+    text-align: center;
+}
 
 
 
