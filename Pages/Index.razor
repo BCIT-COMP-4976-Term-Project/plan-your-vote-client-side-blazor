@@ -1,5 +1,7 @@
 ﻿@layout MainLayout
 @page "/"
+@inject NavigationManager NavigationManager
+
 
 
 <div class='container'>
@@ -10,22 +12,16 @@
                     <p class='section-description'>Be prepared for the random order ballot. Choose candidates, answer
                     Capital Plan borrowing questions, and pick where and when to vote -
                     all with Plan Your Vote.</p>
-                    @*
-                        {START PLANNING LINK HERE]
-                        {this.startPlanning()} 
-                    *@
-                    <div style="background-color:@highlightYellow">[NEED A LINK HERE TO START-PLANNING]</div>
-
+                    <div class='planning'>
+                        <a @onclick="navigateToPlanning">
+                            Start Planning! &nbsp;
+                            <span class='fas fa-chevron-right' />
+                        </a>
+                    </div>
                     @foreach (var bullet in bulletPlanning)
                     {
                         <ol>@bullet.Key.  @bullet.Value</ol>
                     }
-                    @* @*
-                        {START PLANNING LINK HERE]
-                        {this.startPlanning()} 
-                    *@
-                    <div style="background-color:@highlightYellow">[NEED A LINK HERE TO START-PLANNING]</div>
-
                     <div class='divider' />
                     <div class='center'>
                         <div
@@ -70,9 +66,12 @@
                         No personal information is needed. We don’t save or share your
                         plan.
                     </p>
-
-                    
-
+                    <div class='planning'>
+                        <a @onclick="navigateToPlanning">
+                            Start Planning! &nbsp;
+                            <span class='fas fa-chevron-right' />
+                        </a>
+                    </div>
                     <p class='reassurance text-uppercase' role='alert'>
                         <img
                         src='https://vancouver.ca/plan-your-vote/img/lock-black.jpg'
@@ -91,8 +90,8 @@
                         href='https://vancouver.ca/your-government/2018-election.aspx'
                         aria-label=' or details on voter registration, identification, and more, visit the full election site on vancouver.ca'
                         >
-                        visit full election site &gt; &nbsp;
-                        <span class='fas fa-chevron-right' />
+                            visit full election site &nbsp;
+                            <span class='fas fa-chevron-right' />
                         </a>
                     </p>
                 </div>
@@ -125,12 +124,32 @@
 @* VISIUAL REMINDER OF SIMPLE LINKS NEEDED FOR ROUTING *@
 @code {
     private string highlightYellow = "yellow";
+
+        void navigateToIndex() 
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    void navigateToPlanning() 
+    {
+        NavigationManager.NavigateTo("planning");
+    }
 }
 
-@* <style>
+<style>
+    .planning {
+        color: #0366D6;
+    }
 
+    .planning:hover {
+        text-decoration: underline;
+    }
 
-</style> *@
+    .intro-center {
+        text-align: center;
+    }
+
+</style>
+
  
 
    

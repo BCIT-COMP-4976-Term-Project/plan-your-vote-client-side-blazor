@@ -59785,6 +59785,11 @@
       "FileKind": "componentImport"
     },
     {
+      "FilePath": "c:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\Pages\\planning.razor",
+      "TargetPath": "Pages\\planning.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "c:\\Users\\JVBPo\\Desktop\\CST_term_4\\_DEV\\comp4976\\term project\\plan-your-vote-client-side-blazor\\Pages\\Counter.razor",
       "TargetPath": "Pages\\Counter.razor",
       "FileKind": "component"
