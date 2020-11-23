@@ -72,6 +72,13 @@ using BlazorClientSide.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "C:\Users\JVBPo\Desktop\CST_term_4\_DEV\comp4976\term project\plan-your-vote-client-side-blazor\_Imports.razor"
+using Blazorise;
+
+#line default
+#line hidden
+#nullable disable
     public partial class SurveyPrompt : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

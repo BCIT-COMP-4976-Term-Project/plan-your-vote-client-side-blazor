@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.1": {
-      "Blazorise/0.9.2": {
+      "Blazorise/0.9.2.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "3.1.10",
@@ -21,10 +21,30 @@
           "buildMultiTargeting/Blazorise.props": {}
         }
       },
-      "Blazorise.Icons.FontAwesome/0.9.2": {
+      "Blazorise.Bootstrap/0.9.2.1": {
         "type": "package",
         "dependencies": {
-          "Blazorise": "0.9.2",
+          "Blazorise": "0.9.2.1",
+          "Microsoft.AspNetCore.Components": "3.1.10",
+          "Microsoft.AspNetCore.Components.Web": "3.1.10"
+        },
+        "compile": {
+          "lib/netstandard2.1/Blazorise.Bootstrap.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Blazorise.Bootstrap.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Bootstrap.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Bootstrap.props": {}
+        }
+      },
+      "Blazorise.Icons.FontAwesome/0.9.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "0.9.2.1",
           "Microsoft.AspNetCore.Components": "3.1.10",
           "Microsoft.AspNetCore.Components.Web": "3.1.10"
         },
@@ -467,16 +487,16 @@
     }
   },
   "libraries": {
-    "Blazorise/0.9.2": {
-      "sha512": "OMaQpepN1Inssv3A9Tj8U1zARs0KudUlhVW0C0s32aVAbn5DD3qqIvbLrl86O6ErUgq/rIlkNePjeQsxDlriLA==",
+    "Blazorise/0.9.2.1": {
+      "sha512": "kbjzv2mr6022mulMAlQ/XoMv5JsqMW9bwXqE6ZQ0YWVXjsVls7Fz7tWzhTaeWmRUVYN2iWQc3f1YdDldO7QmyA==",
       "type": "package",
-      "path": "blazorise/0.9.2",
+      "path": "blazorise/0.9.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Blazorise.png",
         "LICENSE.md",
-        "blazorise.0.9.2.nupkg.sha512",
+        "blazorise.0.9.2.1.nupkg.sha512",
         "blazorise.nuspec",
         "build/Blazorise.props",
         "build/Microsoft.AspNetCore.StaticWebAssets.props",
@@ -488,16 +508,37 @@
         "staticwebassets/blazorise.js"
       ]
     },
-    "Blazorise.Icons.FontAwesome/0.9.2": {
-      "sha512": "XsT3dBOR5jIRAqfDaHFxI2OOeeisHV7ox02ePCX7VXmT489ovu9QHLNXFs57GUJMLkp08PaO8hCVv8+3+wDapg==",
+    "Blazorise.Bootstrap/0.9.2.1": {
+      "sha512": "mgsczDd9yp0BaTJkmYcvPijUNbDdNOI9wcypJbAbE/SsENXnhQSPuWGESKeqpQ574cT2/2iHQ0g3oVYKtVtYjQ==",
       "type": "package",
-      "path": "blazorise.icons.fontawesome/0.9.2",
+      "path": "blazorise.bootstrap/0.9.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Blazorise.png",
         "LICENSE.md",
-        "blazorise.icons.fontawesome.0.9.2.nupkg.sha512",
+        "blazorise.bootstrap.0.9.2.1.nupkg.sha512",
+        "blazorise.bootstrap.nuspec",
+        "build/Blazorise.Bootstrap.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Bootstrap.props",
+        "buildTransitive/Blazorise.Bootstrap.props",
+        "lib/net5.0/Blazorise.Bootstrap.dll",
+        "lib/netstandard2.1/Blazorise.Bootstrap.dll",
+        "staticwebassets/blazorise.bootstrap.css",
+        "staticwebassets/blazorise.bootstrap.js"
+      ]
+    },
+    "Blazorise.Icons.FontAwesome/0.9.2.1": {
+      "sha512": "TZ/jXBO4/prwZR7LrSQWJoIzDLg+0UKAKvOi03Ahe9mWWCHDTcn1xEnasdn44+VZkqh5Q7M88F9iTg4EQuEcag==",
+      "type": "package",
+      "path": "blazorise.icons.fontawesome/0.9.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.icons.fontawesome.0.9.2.1.nupkg.sha512",
         "blazorise.icons.fontawesome.nuspec",
         "lib/net5.0/Blazorise.Icons.FontAwesome.dll",
         "lib/netstandard2.1/Blazorise.Icons.FontAwesome.dll"
@@ -1699,7 +1740,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
-      "Blazorise.Icons.FontAwesome >= 0.9.2",
+      "Blazorise.Bootstrap >= 0.9.2.1",
+      "Blazorise.Icons.FontAwesome >= 0.9.2.1",
       "Microsoft.AspNetCore.Components.WebAssembly >= 3.2.1",
       "Microsoft.AspNetCore.Components.WebAssembly.Build >= 3.2.1",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 3.2.1",
@@ -1748,9 +1790,13 @@
     "frameworks": {
       "netstandard2.1": {
         "dependencies": {
+          "Blazorise.Bootstrap": {
+            "target": "Package",
+            "version": "[0.9.2.1, )"
+          },
           "Blazorise.Icons.FontAwesome": {
             "target": "Package",
-            "version": "[0.9.2, )"
+            "version": "[0.9.2.1, )"
           },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
