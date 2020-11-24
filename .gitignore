@@ -5,6 +5,7 @@
 *.db
 Web/Migrations/
 bin/
+obj/
 # User-specific files
 *.suo
 *.user
