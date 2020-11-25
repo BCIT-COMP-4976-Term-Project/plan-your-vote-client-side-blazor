@@ -275,3 +275,4 @@ commit counter.txt
 
 #Ignore azurekeyvault.json
 **/azurekeyvault.json
+
