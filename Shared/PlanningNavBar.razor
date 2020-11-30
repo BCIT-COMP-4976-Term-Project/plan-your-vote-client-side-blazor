@@ -1,0 +1,52 @@
+@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+@layout MainLayout
+@page "/NavBar"
+
+<div class='container'>
+    <div class="navbar subnavbar px-0">
+        <div class='navbar-opt'>
+            <a @onclick="navigateToCandidates">Candidates</a>  
+        </div>
+        <div class='navbar-opt'>
+            <a @onclick="navigateToCapital">Capital</a> 
+        </div>
+        <div class='navbar-opt'>
+            <a @onclick="navigateToSchedule">Schedule</a> 
+        </div>
+        <div class='navbar-opt'>
+            <a @onclick="navigateToReview">Review</a>  
+        </div>
+    
+        @* <Link to={routes.CAPITAL} class="nav-link nav-item">Capital</Link>
+        <Link to={routes.SCHEDULE} class="nav-link nav-item">Schedule</Link>
+        <Link to={routes.REVIEW} class="nav-link nav-item">Review</Link> *@
+
+        <div>
+            @Body
+        </div>
+    </div>
+</div>
+
+
+@code {
+  void navigateToCandidates()
+  {
+    NavigationManager.NavigateTo("candidates");
+  }
+
+  void navigateToCapital()
+  {
+    NavigationManager.NavigateTo("capital");
+  }
+
+  void navigateToSchedule()
+  {
+    NavigationManager.NavigateTo("Schedule");
+  }
+
+  void navigateToReview()
+  {
+    NavigationManager.NavigateTo("Review");
+  }
+}

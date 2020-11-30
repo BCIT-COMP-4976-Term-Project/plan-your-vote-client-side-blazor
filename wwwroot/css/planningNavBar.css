@@ -1,0 +1,12 @@
+.navbar.subnavbar.px-0{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.navbar-opt {
+    color: #0366D6;
+}
+
+.navbar-opt:hover {
+    text-decoration: underline;
+}

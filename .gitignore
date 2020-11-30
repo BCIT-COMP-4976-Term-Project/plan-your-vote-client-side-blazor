@@ -5,6 +5,7 @@
 *.db
 Web/Migrations/
 bin/
+obj/
 # User-specific files
 *.suo
 *.user
@@ -274,3 +275,4 @@ commit counter.txt
 
 #Ignore azurekeyvault.json
 **/azurekeyvault.json
+
