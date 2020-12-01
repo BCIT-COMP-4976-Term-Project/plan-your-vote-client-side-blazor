@@ -20,7 +20,7 @@
         <div class='row'>
             <div class='col-md-6'>
                 @* <img id='footer-logo' src={logo.value} alt={logo.description} /> *@
-                <div id='footer-copyright'>&copy; 2019 Vancouver</div>
+                <div id='footer-copyright'>&copy; 2019 Vancouver main</div>
                 <ul id='footer-nav'>
                     <li>
                     <a href='https://vancouver.ca/your-government/terms-of-use.aspx'>
@@ -63,13 +63,26 @@
        {"facebook", "fa-facebook fa-3x"},
        {"linkedin", "fa-linkedin fa-3x"}
     };
-    void navigateToIndex() 
+    void navigateToIndex()
     {
         NavigationManager.NavigateTo("/");
     }
-    void navigateToPlanning() 
+    void navigateToPlanning()
     {
         NavigationManager.NavigateTo("/Candidates");
     }
+    void navigateToCapital() 
+    {
+        NavigationManager.NavigateTo("/Capital");
+    }
+    void navigateToSchedule() 
+    {
+        NavigationManager.NavigateTo("/Schedule");
+    }
+    void navigateToReview() 
+    {
+        NavigationManager.NavigateTo("/Review");
+    }
+    
 }
 
