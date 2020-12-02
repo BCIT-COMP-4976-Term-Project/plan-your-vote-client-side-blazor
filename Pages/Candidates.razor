@@ -29,9 +29,38 @@ else
                     <p></p>
                 </div>
                 @foreach(var candidate in race.GetProperty("Candidates").EnumerateArray())
-                {
+                    var image = "https://vote-cms.azurewebsites.net/" + candidate.GetProperty("Picture").ToString();
+                    var platform = "";
+                    string[] priority = new string[3];
+                    List<string> contacts = new List<string>();
+                    var biography = "";
+
+                    foreach(var detail in candidate.GetProperty("Details").EnumerateArray())
+                    {
+                        if(detail.GetProperty("Title").ToString().Equals("Priority 1")){
+                            priority[0] = detail.GetProperty("Text").ToString();
+                        }
+                        else if(detail.GetProperty("Title").ToString().Equals("Priority 2")){
+                            priority[1] = detail.GetProperty("Text").ToString();
+                        }
+                        else if(detail.GetProperty("Title").ToString().Equals("Priority 3")){
+                            priority[2] = detail.GetProperty("Text").ToString();
+                        }
+                        else if(detail.GetProperty("Title").ToString().Equals("Biography")){
+                            biography = detail.GetProperty("Text").ToString();
+                        }
+                        else
+                        {
+                            platform = detail.GetProperty("Text").ToString();
+                        }
+                    }
+                    foreach(var contact in candidate.GetProperty("Contacts").EnumerateArray())
+                    {
+                        contacts.Add(contact.GetProperty("ContactValue").ToString());
+                    }
+
                     <div class='col-sm-3'>
-                        <div class='card' data-toggle='modal' data-target='#candidate-undefined-modal' onclick=@handleClick()>
+                        <div class='card' data-toggle='modal' data-target='#candidate-undefined-modal' @onclick="@(e => handleClick(@candidate.GetProperty("Name").ToString(), @image, @biography, @priority, @platform, @contacts))">
                             <img class='card-img-top' src=https://vote-cms.azurewebsites.net//@candidate.GetProperty("Picture") alt=@candidate.GetProperty("Name")/>
                             <div class='card-body'>
                                 <h5 class='card-title'>@candidate.GetProperty("Name")</h5>
@@ -49,7 +78,6 @@ else
 {
     ElementReference CardReference;
 
-    @* private JsonElement[] candidates { get; set; } *@
     private JsonElement[] races { get; set; }
     private HttpResponseMessage message { get; set;}
 
@@ -65,18 +93,11 @@ else
     {
         try
         {
-            @* candidates  = await Http.GetFromJsonAsync<JsonElement[]>("https://vote-cms.azurewebsites.net/api/candidates"); *@
-            message     = await Http.GetAsync("https://vote-cms.azurewebsites.net/api/races");
             message.EnsureSuccessStatusCode();
             result      = JsonDocument.Parse(await message.Content.ReadAsStringAsync());
             races       = new JsonElement[result.RootElement.GetProperty("races").GetArrayLength()];
             foreach(var race in result.RootElement.GetProperty("races").EnumerateArray()){
                 races[race.GetProperty("BallotOrder").GetInt16()-1] = race;
-            }
-
-            foreach(var race in races)
-            {
-                Console.WriteLine(race);
             }
 
             StateHasChanged();
@@ -101,9 +122,9 @@ else
         string position { get; set;}
     }
 
-    private void handleClick(ElementReference CardReference) 
+    private void handleClick(string name, string picture, string biography, string[] priority, string platform, List<string> contacts) 
     {
-        CardReference.
+
     }
 
 }
