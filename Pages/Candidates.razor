@@ -1,4 +1,5 @@
 @using System.Text.Json
+@* @using System *@
 
 @layout PlanningNavBar
 @inject HttpClient Http
@@ -28,50 +29,111 @@ else
                     <br>
                     <p></p>
                 </div>
-                @foreach(var candidate in race.GetProperty("Candidates").EnumerateArray())
-                    var image = "https://vote-cms.azurewebsites.net/" + candidate.GetProperty("Picture").ToString();
-                    var platform = "";
-                    string[] priority = new string[3];
-                    List<string> contacts = new List<string>();
-                    var biography = "";
 
-                    foreach(var detail in candidate.GetProperty("Details").EnumerateArray())
-                    {
-                        if(detail.GetProperty("Title").ToString().Equals("Priority 1")){
-                            priority[0] = detail.GetProperty("Text").ToString();
-                        }
-                        else if(detail.GetProperty("Title").ToString().Equals("Priority 2")){
-                            priority[1] = detail.GetProperty("Text").ToString();
-                        }
-                        else if(detail.GetProperty("Title").ToString().Equals("Priority 3")){
-                            priority[2] = detail.GetProperty("Text").ToString();
-                        }
-                        else if(detail.GetProperty("Title").ToString().Equals("Biography")){
-                            biography = detail.GetProperty("Text").ToString();
-                        }
-                        else
-                        {
-                            platform = detail.GetProperty("Text").ToString();
-                        }
-                    }
-                    foreach(var contact in candidate.GetProperty("Contacts").EnumerateArray())
-                    {
-                        contacts.Add(contact.GetProperty("ContactValue").ToString());
-                    }
+                var chosenList = getList(@race.GetProperty("PositionName").ToString());
+                @foreach(var listCandidate in chosenList)
+                {
+                    var image = listCandidate[2];
+                    var platform = listCandidate[3];
+                    string[] priority = new string[3] {listCandidate[13], listCandidate[14], listCandidate[15]};
+                    string[] contacts = new string[8] { listCandidate[5], listCandidate[6], listCandidate[7],listCandidate[8], listCandidate[9], listCandidate[10],listCandidate[11], listCandidate[12]};
+                    @* List<string> contacts = new List<string>(); *@
+                    var biography = listCandidate[4];
 
                     <div class='col-sm-3'>
-                        <div class='card' data-toggle='modal' data-target='#candidate-undefined-modal' @onclick="@(e => handleClick(@candidate.GetProperty("Name").ToString(), @image, @biography, @priority, @platform, @contacts))">
-                            <img class='card-img-top' src=https://vote-cms.azurewebsites.net//@candidate.GetProperty("Picture") alt=@candidate.GetProperty("Name")/>
+                        <div class='card' data-toggle='modal' data-target='#candidate-undefined-modal' @onclick="@(e => handleClick(@listCandidate[0], @image, @biography, @priority, @platform, @contacts))">
+                            <img class='card-img-top' src=@listCandidate[2] alt=@listCandidate[0]/>
                             <div class='card-body'>
-                                <h5 class='card-title'>@candidate.GetProperty("Name")</h5>
+                                <h5 class='card-title'>@listCandidate[0]</h5>
                                 <h6 class='card-subtitle mb-2 text-muted'></h6>
                             </div>     
                         </div>
-                    </div>       
+                    </div>
                 }  
-            }   
-        </div>      
-    </div>   
+            }  
+            <div
+            class='modal fade'
+            id={`candidate-${candidate.CandidateId}-modal`}
+            tabIndex='-1'
+            role='dialog'
+            aria-labelledby={`candidate-${candidate.candidateId}-modal-label`}
+            aria-hidden='true'
+            >
+            @* <div
+                class='modal-dialog modal-lg modal-dialog-centered'
+                role='document'
+                >
+                <div class='modal-content'>
+                    <div class='nonScroll'>
+                        <div class='modal-header'>
+                        <h3
+                            class='modal-title'
+                            id={`candidate-${candidate.CandidateId}-modal-label`}
+                            >
+                            {candidate.Name}
+                            <br />
+                            <span class='card-subtitle mb-2 text-muted'>
+                            {candidate.OrganizationName}
+                            </span>
+                        </h3>
+                        <button
+                            type='button'
+                            class='close'
+                            data-dismiss='modal'
+                            aria-label='Close'
+                            >
+                        <span aria-hidden='true'>&times;</span>
+                        </button>
+                        </div>
+                    </div>
+                    <div class='modal-body'>
+                        <div class='nonScroll'>
+                        <img
+                            src={`${CMS_BASE_URL}/${candidate.Picture}`}
+                            class='card-img-top'
+                            alt={candidate.Name}
+                            />
+                        <button
+                            type='button'
+                            onClick={selectFunction(position, candidate)}
+                            class='btn btn-primary addCanBtn'
+                            >
+                        {selectedCandidates.length === 0
+                        ? 'ADD'
+                        : selectedCandidates.findIndex(
+                        cand => cand.CandidateId === candidate.CandidateId
+                        ) >= 0
+                        ? 'REMOVE'
+                        : 'ADD'}
+                        </button>
+                        </div>
+                        <div class='modalScroll'>
+                        <span class='modalTitles'>Top 3 Priorities</span>
+                        <br />
+                        <p>1. {displayPriority(getDesiredDetail('Priority 1'))}</p>
+                        <p>2. {displayPriority(getDesiredDetail('Priority 2'))}</p>
+                        <p>3. {displayPriority(getDesiredDetail('Priority 3'))}</p>
+                        <p class='modalTitles'>Platform</p>
+                        {displayPriority(getDesiredDetail('Platform'))}
+                        <p class='modalTitles'>Biography</p>
+                        {displayPriority(getDesiredDetail('Biography'))}
+                        {displayContact}
+                        </div>
+                        <div class='modal-footer'>
+                        <button
+                            type='button'
+                            class='btn btn-secondary'
+                            data-dismiss='modal'
+                            >
+                        Close
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div> *@
+        </div>  
+    </div>      
+</div>   
 }
 
 @functions 
@@ -82,7 +144,10 @@ else
     private HttpResponseMessage message { get; set;}
 
     private JsonDocument result { get; set; }
-
+    List<List<string>> mayorCandidates = new List<List<string>>();
+    List<List<string>> councillorCandidates = new List<List<string>>();
+    List<List<string>> boardCandidates = new List<List<string>>();
+    List<List<string>> trusteeCandidates = new List<List<string>>();
     
     protected override async Task OnInitializedAsync()
     {
@@ -93,41 +158,213 @@ else
     {
         try
         {
+            var message = await Http.GetAsync("https://vote-cms.azurewebsites.net/api/races");
             message.EnsureSuccessStatusCode();
             result      = JsonDocument.Parse(await message.Content.ReadAsStringAsync());
             races       = new JsonElement[result.RootElement.GetProperty("races").GetArrayLength()];
+
             foreach(var race in result.RootElement.GetProperty("races").EnumerateArray()){
                 races[race.GetProperty("BallotOrder").GetInt16()-1] = race;
             }
+
+
+            doEveryThing(races);
+
+            
+            @* Console.WriteLine("Print the counts/length");
+            Console.WriteLine(races.Length); *@
+            @* Console.WriteLine(mayorCandidates.Count); *@
+
+            @* int stop = 0;
+            foreach(var item in mayorCandidates)
+            {
+                if(stop > 2)
+                {
+                    break;
+                }
+                Console.WriteLine(item[0]);
+                
+                stop++;
+            } *@
+            
 
             StateHasChanged();
         }
         catch (Exception ex)
         {
-
+            Console.Write(ex);
         }
         finally
         {
-            Console.Write("Must execute here");
+            Console.Write("ignore this");
         }
         
     }
 
-    class Person
-    {
-        string name { get; set; }
-        string bio { get; set; }
-        string image { get; set; }
 
-        string position { get; set;}
+    private void handleClick(string name, string picture, string biography, string[] priority, string platform, string[] contacts) 
+    {
+        Console.WriteLine("still working on this");
     }
 
-    private void handleClick(string name, string picture, string biography, string[] priority, string platform, List<string> contacts) 
+    private List<List<string>> getList(string list)
     {
-
+        if(list == "Mayor")
+        {
+            return mayorCandidates;
+        } 
+        else if(list == "Councillor")
+        {
+            return councillorCandidates;
+        } 
+        else if(list == "Park Board commissioner")
+        {
+            return boardCandidates;
+        } 
+        else
+        {
+            return trusteeCandidates;
+        } 
     }
 
+    private string[] getPriorities(JsonElement detail)
+    {
+        string[] priority = new string[3];
+        if(detail.GetProperty("Title").ToString().Equals("Priority 1")){
+            priority[0] = detail.GetProperty("Text").ToString();
+        }
+        else if(detail.GetProperty("Title").ToString().Equals("Priority 2")){
+            priority[1] = detail.GetProperty("Text").ToString();
+        }
+        else if(detail.GetProperty("Title").ToString().Equals("Priority 3")){
+            priority[2] = detail.GetProperty("Text").ToString();
+        }
+
+        return priority;
+    }
+    private string[] getContacts(JsonElement candidate)
+    {
+        Console.WriteLine("Entered getContacts()");
+        string[] contacts = new string[9];
+
+        foreach(var contact in candidate.GetProperty("Contacts").EnumerateArray())
+        {      
+            if(contact.GetProperty("ContactMethod").ToString().Equals(0)){
+                contacts[0] = (contact.GetProperty("ContactValue").ToString());
+            }
+            else if(contact.GetProperty("ContactMethod").ToString().Equals(1)){
+                contacts[1] = (contact.GetProperty("ContactValue").ToString());
+            }
+            else if(contact.GetProperty("ContactMethod").ToString().Equals(2)){
+                contacts[2] = (contact.GetProperty("ContactValue").ToString());
+            }
+            else if(contact.GetProperty("ContactMethod").ToString().Equals(3)){
+                contacts[3] = (contact.GetProperty("ContactValue").ToString());
+            }
+            else if(contact.GetProperty("ContactMethod").ToString().Equals(4)){
+                contacts[4] = (contact.GetProperty("ContactValue").ToString());
+            }
+            else if(contact.GetProperty("ContactMethod").ToString().Equals(5)){
+                contacts[5] = (contact.GetProperty("ContactValue").ToString());
+            }
+            else if(contact.GetProperty("ContactMethod").ToString().Equals(6)){
+                contacts[6] = (contact.GetProperty("ContactValue").ToString());
+            }
+            else if(contact.GetProperty("ContactMethod").ToString().Equals(7)){
+                contacts[7] = (contact.GetProperty("ContactValue").ToString());
+            }
+            else 
+            {
+                contacts[8] = (contact.GetProperty("ContactValue").ToString());
+            }
+        }
+        return contacts;
+    }
+
+   private void doEveryThing(JsonElement[] races)
+   {    
+        foreach (var race in races)
+        {  
+            foreach(var candidate in race.GetProperty("Candidates").EnumerateArray())
+            {     
+                List<string> electoralCandidate = new List<string>();
+                var name = candidate.GetProperty("Name").ToString();
+                var position =  candidate.GetProperty("OrganizationName").ToString();
+                var image = "https://vote-cms.azurewebsites.net//" + candidate.GetProperty("Picture").ToString();
+                var platform = "";
+                string[] priority = new string[3];
+                string[] contacts = new string[9];
+                var biography = "";
+
+                foreach(var detail in candidate.GetProperty("Details").EnumerateArray())
+                {
+                    priority = getPriorities(detail);
+
+                    if(detail.GetProperty("Title").ToString().Equals("Biography")){
+                        biography = detail.GetProperty("Text").ToString();
+                    }
+                    else
+                    {
+                        platform = detail.GetProperty("Text").ToString();
+                    }
+                }
+
+                contacts = getContacts(candidate);
+                
+                electoralCandidate.Add(name);
+                electoralCandidate.Add(position);
+                electoralCandidate.Add(image);
+                electoralCandidate.Add(platform);
+                electoralCandidate.Add(biography);
+                for(var i = 0; i < contacts.Length; i++)
+                {
+                    try
+                    {
+                        electoralCandidate.Add(contacts[i]);
+                    }
+                    catch (Exception ex)
+                    {
+                        contacts[i] = "";
+                        electoralCandidate.Add(contacts[i]);
+                    }
+                }
+
+
+                electoralCandidate.Add(priority[0]);
+                electoralCandidate.Add(priority[1]);
+                electoralCandidate.Add(priority[2]);
+               
+               createList(electoralCandidate, race);
+            }
+        }
+    }
+
+
+    private void createList(List<string> electoralCandidate, JsonElement race)
+    {
+        var currentList = mayorCandidates;
+        if(@race.GetProperty("PositionName").ToString() == "Mayor") 
+            currentList.Add(electoralCandidate);
+        else if(@race.GetProperty("PositionName").ToString() == "Councillor") 
+        {
+            currentList = councillorCandidates;
+            currentList.Add(electoralCandidate);
+        }
+        else if(@race.GetProperty("PositionName").ToString() == "Park Board commissioner")
+        {
+            currentList = boardCandidates;
+            currentList.Add(electoralCandidate);
+        }
+        else
+        {
+            currentList = trusteeCandidates;
+            currentList.Add(electoralCandidate);
+        }
+    }
 }
+
+
+
 <style>
 .card-body {
   text-align: center;
