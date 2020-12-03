@@ -16,43 +16,20 @@
                             <span class='fas fa-chevron-right' />
                         </a>
                     </div>
+                    <div class="row">
+                        <div class="col">
                     @foreach (var bullet in bulletPlanning)
                     {
                         <ol>@bullet.Key.  @bullet.Value</ol>
                     }
-                    <div class='divider' />
-                    <div class='center'>
-                        <div
-                            class='intro-left'
-                            role='region'
-                            aria-label='Voter tool - Feature list:'
-                        >
-                            @* {this.introTips()} *@
-                        </div>
-                        <div
-                            class='intro-right'
-                            role='region'
-                            tabIndex='-1'
-                            aria-label='voter tool - general flow'
-                        >
+                    </div> 
+                    <div class="col">
                             <img
                             class='intro-right-img'
                             src='https://vancouver.ca/plan-your-vote/img/intro_right_legend.png'
                             alt='intro'
                             />
-                            <span class='intro-pointer candidates'>
-                            Step 1 Your candidate selections
-                            </span>
-                            <span class='intro-pointer capital-plan'>
-                            Step 2 Your Capital Plan borrowing answers
-                            </span>
-                            <span class='intro-pointer details'>
-                            Step 3 Your voting day and location details
-                            </span>
-                            <span class='intro-pointer checklist'>
-                            Step 4 Your voting checklist
-                            </span>
-                        </div>
+                            </div>
                     </div>
                 <div class='divider' />
                 <div
@@ -102,7 +79,7 @@
     Dictionary<string, string> bulletPlanning = new Dictionary<string, string>() {
         { "1", "Browse candidates for mayor, councillor, Park Board commissioner, and school trustee, then add your favourites to your plan." },
         { "2", "Answer 3 Capital Plan borrowing questions about whether the City can borrow money to help pay for certain projects." },
-        { "3", "`Choose from 9 voting days and over 100 locations to fit your schedule." },
+        { "3", "Choose from 9 voting days and over 100 locations to fit your schedule." },
         { "4", "Email your plan and add voting day details to your calendar. Your plan will show your chosen candidates in the order you’ll find them on your ballot." }
     };
 
