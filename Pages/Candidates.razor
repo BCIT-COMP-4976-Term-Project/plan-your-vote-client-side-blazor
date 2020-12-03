@@ -6,6 +6,26 @@
 
 @page "/Candidates"
 
+        @* 
+        This represents the crazy indexing of a electoral candidates || card
+        0 =name);
+        1 =position);
+        2 =image);
+        3 =platform);
+        4 =biography);
+        5  = contact info
+        6 = contact info
+        7 = contact info
+        8 = contact info
+        9 = contact info
+        10 = contact info
+        11 = contact info
+        12 = contact info
+        13 = contact info
+        14 = priority1
+        15 = priority2
+        16 = priority3
+        *@
 @if (races == null)
 {
     <p><em>Loading...</em></p>
@@ -31,17 +51,20 @@ else
                 </div>
 
                 var chosenList = getList(@race.GetProperty("PositionName").ToString());
+                int stop = 0;
                 @foreach(var listCandidate in chosenList)
                 {
+                    if(stop > 2)
+                        break;
                     var image = listCandidate[2];
                     var platform = listCandidate[3];
-                    string[] priority = new string[3] {listCandidate[13], listCandidate[14], listCandidate[15]};
-                    string[] contacts = new string[8] { listCandidate[5], listCandidate[6], listCandidate[7],listCandidate[8], listCandidate[9], listCandidate[10],listCandidate[11], listCandidate[12]};
+                    string[] priority = new string[3] {listCandidate[5], listCandidate[6], listCandidate[7]};
+                    string[] contacts = new string[9] { listCandidate[8], listCandidate[9], listCandidate[10],listCandidate[11], listCandidate[12], listCandidate[13],listCandidate[14], listCandidate[15], listCandidate[16]};
                     @* List<string> contacts = new List<string>(); *@
                     var biography = listCandidate[4];
 
                     <div class='col-sm-3'>
-                        <div class='card' data-toggle='modal' data-target='#candidate-undefined-modal' @onclick="@(e => handleClick(@listCandidate[0], @image, @biography, @priority, @platform, @contacts))">
+                        <div class='card btn btn-info btn-lg' data-toggle='modal' data-target='#myModal' @onclick="@(e => handleClick(@listCandidate[0], @listCandidate[1], @image, @biography, @platform, @priority, @contacts))">
                             <img class='card-img-top' src=@listCandidate[2] alt=@listCandidate[0]/>
                             <div class='card-body'>
                                 <h5 class='card-title'>@listCandidate[0]</h5>
@@ -51,89 +74,88 @@ else
                     </div>
                 }  
             }  
-            <div
-            class='modal fade'
-            id={`candidate-${candidate.CandidateId}-modal`}
-            tabIndex='-1'
-            role='dialog'
-            aria-labelledby={`candidate-${candidate.candidateId}-modal-label`}
-            aria-hidden='true'
-            >
-            @* <div
-                class='modal-dialog modal-lg modal-dialog-centered'
-                role='document'
-                >
-                <div class='modal-content'>
-                    <div class='nonScroll'>
-                        <div class='modal-header'>
-                        <h3
-                            class='modal-title'
-                            id={`candidate-${candidate.CandidateId}-modal-label`}
-                            >
-                            {candidate.Name}
-                            <br />
-                            <span class='card-subtitle mb-2 text-muted'>
-                            {candidate.OrganizationName}
-                            </span>
-                        </h3>
-                        <button
-                            type='button'
-                            class='close'
-                            data-dismiss='modal'
-                            aria-label='Close'
-                            >
-                        <span aria-hidden='true'>&times;</span>
-                        </button>
+            <div>
+                <h1 class="hello" style="visibility:@hide">Can I see this</h1>
+            </div>
+            <div class="container">
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog" aria-hidden="hidden">
+                    <div class="modal-dialog">
+                    
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class='nonScroll'>
+                            <div class="modal-header">
+                                <h3 class='modal-title'
+                                    id='candidate-modal-label'
+                                    >
+                                    @card[0]
+                                    <br />
+                                    <span class='card-subtitle mb-2 text-muted'>
+                                    @card[1]
+                                    </span>
+                                </h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                @* <span aria-hidden="hidden">&times;</span> *@
+                           </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="nonScroll">
+                                <img
+                                    src=@card[2]
+                                    class='card-img-top'
+                                    alt=@card[0]
+                                    />
+                                <button
+                                    type='button'
+                                    @* onClick={selectFunction(position, candidate)} *@
+                                    class='btn btn-primary addCanBtn'
+                                    data-dismiss="modal"
+                                    >ADD
+                                @* {selectedCandidates.length === 0
+                                ? 'ADD'
+                                : selectedCandidates.findIndex(
+                                cand => cand.CandidateId === candidate.CandidateId
+                                ) >= 0
+                                ? 'REMOVE'
+                                : 'ADD'} *@
+                                </button>
+                            </div>
+                            <div class='modalScroll'>
+                                <span class='modalTitles'>Top 3 Priorities</span>
+                                <br />
+                                <p>1. @card[5]</p>
+                                <p>2. @card[6]</p>
+                                <p>3. @card[7]</p>
+                                <p class='modalTitles'>Platform</p>
+                                    <p>@card[4]</p>
+                                <p class='modalTitles'>Biography</p>
+                                   <p>@card[3]</p>
+                                <div>
+                                    <p class='modalTitles'>Contact Information:</p>
+                                    <p>@card[10]</p>
+                                    <p>@card[11]</p>
+                                    <p>@card[12]</p>
+                                    <p>@card[13]</p>
+                                    <p>@card[14]</p>
+                                    <p>@card[15]</p>
+                                    <p>@card[16]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
-                    <div class='modal-body'>
-                        <div class='nonScroll'>
-                        <img
-                            src={`${CMS_BASE_URL}/${candidate.Picture}`}
-                            class='card-img-top'
-                            alt={candidate.Name}
-                            />
-                        <button
-                            type='button'
-                            onClick={selectFunction(position, candidate)}
-                            class='btn btn-primary addCanBtn'
-                            >
-                        {selectedCandidates.length === 0
-                        ? 'ADD'
-                        : selectedCandidates.findIndex(
-                        cand => cand.CandidateId === candidate.CandidateId
-                        ) >= 0
-                        ? 'REMOVE'
-                        : 'ADD'}
-                        </button>
-                        </div>
-                        <div class='modalScroll'>
-                        <span class='modalTitles'>Top 3 Priorities</span>
-                        <br />
-                        <p>1. {displayPriority(getDesiredDetail('Priority 1'))}</p>
-                        <p>2. {displayPriority(getDesiredDetail('Priority 2'))}</p>
-                        <p>3. {displayPriority(getDesiredDetail('Priority 3'))}</p>
-                        <p class='modalTitles'>Platform</p>
-                        {displayPriority(getDesiredDetail('Platform'))}
-                        <p class='modalTitles'>Biography</p>
-                        {displayPriority(getDesiredDetail('Biography'))}
-                        {displayContact}
-                        </div>
-                        <div class='modal-footer'>
-                        <button
-                            type='button'
-                            class='btn btn-secondary'
-                            data-dismiss='modal'
-                            >
-                        Close
-                        </button>
-                        </div>
+                    
                     </div>
                 </div>
-            </div> *@
-        </div>  
+                
+            </div>
+        </div>
     </div>      
-</div>   
+  
 }
 
 @functions 
@@ -148,6 +170,8 @@ else
     List<List<string>> councillorCandidates = new List<List<string>>();
     List<List<string>> boardCandidates = new List<List<string>>();
     List<List<string>> trusteeCandidates = new List<List<string>>();
+    string[] card = new string[17];
+    string hide = "visible";
     
     protected override async Task OnInitializedAsync()
     {
@@ -169,8 +193,6 @@ else
 
 
             doEveryThing(races);
-
-            
             @* Console.WriteLine("Print the counts/length");
             Console.WriteLine(races.Length); *@
             @* Console.WriteLine(mayorCandidates.Count); *@
@@ -202,9 +224,32 @@ else
     }
 
 
-    private void handleClick(string name, string picture, string biography, string[] priority, string platform, string[] contacts) 
+    private void handleClick(string name, string position, string picture, string biography, string platform, string[] priority, string[] contacts) 
+    { 
+        card[0] = name;
+        card[1] = position;
+        card[2] = picture;
+        card[3] = platform;
+        card[4] = biography;
+        card[5] = priority[0];
+        card[6] = priority[1];
+        card[7] = priority[2];
+        card[8] = contacts[0];
+        card[9] = contacts[1];
+        card[10]  = contacts[2];
+        card[11] = contacts[3];
+        card[12] = contacts[4];
+        card[13] = contacts[5];
+        card[14] = contacts[6];
+        card[15] = contacts[7];
+        card[16] = contacts[8]; 
+    }
+
+    private void isHidden()
     {
-        Console.WriteLine("still working on this");
+        if(hide == "hidden") hide = "visible";
+        else hide = "hidden";
+        Console.WriteLine(hide);
     }
 
     private List<List<string>> getList(string list)
@@ -212,6 +257,7 @@ else
         if(list == "Mayor")
         {
             return mayorCandidates;
+            
         } 
         else if(list == "Councillor")
         {
@@ -227,30 +273,18 @@ else
         } 
     }
 
-    private string[] getPriorities(JsonElement detail)
-    {
-        string[] priority = new string[3];
-        if(detail.GetProperty("Title").ToString().Equals("Priority 1")){
-            priority[0] = detail.GetProperty("Text").ToString();
-        }
-        else if(detail.GetProperty("Title").ToString().Equals("Priority 2")){
-            priority[1] = detail.GetProperty("Text").ToString();
-        }
-        else if(detail.GetProperty("Title").ToString().Equals("Priority 3")){
-            priority[2] = detail.GetProperty("Text").ToString();
-        }
-
-        return priority;
-    }
     private string[] getContacts(JsonElement candidate)
     {
-        Console.WriteLine("Entered getContacts()");
         string[] contacts = new string[9];
-
         foreach(var contact in candidate.GetProperty("Contacts").EnumerateArray())
-        {      
+        {   
+            int index = Int16.Parse(contact.GetProperty("ContactMethod").ToString());
+            contacts[index] = contact.GetProperty("ContactValue").ToString() == null ? "" : contact.GetProperty("ContactValue").ToString();
+
+
+            @* 
             if(contact.GetProperty("ContactMethod").ToString().Equals(0)){
-                contacts[0] = (contact.GetProperty("ContactValue").ToString());
+                contacts[0] = contact.GetProperty("ContactValue").ToString() == null ? "" : contact.GetProperty("ContactValue").ToString();
             }
             else if(contact.GetProperty("ContactMethod").ToString().Equals(1)){
                 contacts[1] = (contact.GetProperty("ContactValue").ToString());
@@ -276,7 +310,8 @@ else
             else 
             {
                 contacts[8] = (contact.GetProperty("ContactValue").ToString());
-            }
+            } 
+            *@
         }
         return contacts;
     }
@@ -298,7 +333,16 @@ else
 
                 foreach(var detail in candidate.GetProperty("Details").EnumerateArray())
                 {
-                    priority = getPriorities(detail);
+
+                    if(detail.GetProperty("Title").ToString().Equals("Priority 1")){
+                        priority[0] = detail.GetProperty("Text").ToString() == null ? "" : detail.GetProperty("Text").ToString();
+                    }
+                    else if(detail.GetProperty("Title").ToString().Equals("Priority 2")){
+                        priority[1] = detail.GetProperty("Text").ToString() == null ? "" : detail.GetProperty("Text").ToString();
+                    }
+                    else if(detail.GetProperty("Title").ToString().Equals("Priority 3")){
+                        priority[2] = detail.GetProperty("Text").ToString() == null ? "" : detail.GetProperty("Text").ToString();
+                    }
 
                     if(detail.GetProperty("Title").ToString().Equals("Biography")){
                         biography = detail.GetProperty("Text").ToString();
@@ -316,6 +360,9 @@ else
                 electoralCandidate.Add(image);
                 electoralCandidate.Add(platform);
                 electoralCandidate.Add(biography);
+                electoralCandidate.Add(priority[0]);
+                electoralCandidate.Add(priority[1]);
+                electoralCandidate.Add(priority[2]);
                 for(var i = 0; i < contacts.Length; i++)
                 {
                     try
@@ -330,9 +377,6 @@ else
                 }
 
 
-                electoralCandidate.Add(priority[0]);
-                electoralCandidate.Add(priority[1]);
-                electoralCandidate.Add(priority[2]);
                
                createList(electoralCandidate, race);
             }
@@ -391,5 +435,48 @@ h5,
 h6 {
   color: #e60050;
 }
+
+.modal-content {
+  background-color: #f4f4f4;
+  padding: 10px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.5);
+  animation-name: modalAction;
+  animation-duration: 0.5s;
+  font-size: 1.5em;
+}
+
+.modal-body img {
+  height: 50%;
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;mod
+  padding-bottom: 10px;
+}
+
+.modalTitles {
+  color: #e60050;
+}
+
+.modalScroll {
+  height: 350px;
+  overflow-y: auto;
+}
+
+.addCanBtn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  height: 50px;
+}
+
+.nonScroll {
+    overflow-y: initial !important;
+}
+
+.hello{
+    block: none;
+
 
 </style>

@@ -1,6 +1,7 @@
 ﻿@layout MainLayout
 @page "/"
 @inject NavigationManager NavigationManager
+@inject IModalService Modal
 
 <div class='container'>
     <div class='row'>
@@ -97,6 +98,7 @@
         </div>
     </div>
 </div>
+
 
 @code {
     Dictionary<string, string> bulletPlanning = new Dictionary<string, string>() {
