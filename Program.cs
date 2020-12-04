@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
-
+using Blazored.Modal;
 namespace BlazorClientSide
 {
     public class Program
@@ -33,6 +33,8 @@ namespace BlazorClientSide
             } );
 
             builder.RootComponents.Add<App>("app");
+
+            builder.Services.AddBlazoredModal();
             
             var host = builder.Build();
 

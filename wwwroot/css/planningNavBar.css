@@ -10,3 +10,12 @@
 .navbar-opt:hover {
     text-decoration: underline;
 }
+
+#Text{
+    width: 1000px;
+}
+
+label{
+    width: 240px;
+    display: inline-block;
+}

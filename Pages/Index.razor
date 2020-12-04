@@ -1,6 +1,7 @@
 ﻿@layout MainLayout
 @page "/"
 @inject NavigationManager NavigationManager
+@inject IModalService Modal
 
 <div class='container'>
     <div class='row'>
@@ -98,6 +99,7 @@
     </div>
 </div>
 
+
 @code {
     Dictionary<string, string> bulletPlanning = new Dictionary<string, string>() {
         { "1", "Browse candidates for mayor, councillor, Park Board commissioner, and school trustee, then add your favourites to your plan." },
@@ -147,7 +149,5 @@
     }
 
 </style>
-
- 
 
    
