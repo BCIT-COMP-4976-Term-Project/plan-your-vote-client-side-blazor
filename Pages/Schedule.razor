@@ -1,5 +1,37 @@
 @layout PlanningNavBar
 
 @page "/Schedule"
+@inject IJSRuntime JSRuntime
 
-<p>Schedule</p>
+<h2>STEP 3: CHOOSE YOUR VOTING DATE AND LOCATION</h2>
+<h4>Not sure when you want to vote yet? Don't worry - you're not committing to a particular day or place.
+   If you live in the UBC Lands or University Endowment Lands, you can vote at 2 voting places only on October 20
+    Opens in new window. These 2 places are not shown on the map below.
+     Skip this step to review your choices and create your plan.</h4>
+
+<div id="map">
+</div>
+
+
+<style>
+  	body { margin: 0; padding: 0; }
+	#map {
+  height: 500px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+
+  }
+</style>
+
+@code {
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+if (firstRender)
+{
+       await JSRuntime.InvokeVoidAsync("loadMap", null); 
+  }
+     }
+
+}
