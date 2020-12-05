@@ -19,6 +19,19 @@
     <link href="css/planningNavBar.css" rel="stylesheet" />
 
     <link href="_content/Blazored.Modal/blazored-modal.css" rel="stylesheet" />
+
+    
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+type="text/css"
+/>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 </head>
 
 <body>
@@ -39,6 +52,28 @@
 
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/Blazored.Modal/blazored.modal.js"></script>
+
+    <script>
+    function loadMap() {
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZHVtbWR1bW0iLCJhIjoiY2p2dWRteGV5MG1uNjRhb2p3d2xmNWk3byJ9.b2AMcF-g-FbF_KrmjBDqTw';
+        var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-74.5, 40],
+        zoom: 9
+        });
+
+        map.addControl(
+        new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        })
+        );
+
+        return "";
+    }
+    </script>
+    
 </body>
 </html>
 
